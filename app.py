@@ -6,8 +6,8 @@ from text_process import filter_profanity
 from text_process import leet_conver
 import time
 
-from geventwebsocket.handler import WebSocketHandler
 from gevent.pywsgi import WSGIServer
+from geventwebsocket.handler import WebSocketHandler
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "jarosimilarity"
@@ -132,5 +132,6 @@ def disconnect():
 
 
 if __name__ == "__main__":
-    http_server = WSGIServer(("", 5000), app, handler_class=WebSocketHandler)
+    app.debug = True
+    http_server = WSGIServer(('0.0.0.0', int(os.environ.get("PORT", 5000))), app, handler_class=WebSocketHandler)
     http_server.serve_forever()
