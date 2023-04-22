@@ -12,7 +12,8 @@ from geventwebsocket.handler import WebSocketHandler
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "jarosimilarity"
 socketio = SocketIO(app)
-
+from gevent import monkey
+monkey.patch_all()
 rooms = {}
 
 
