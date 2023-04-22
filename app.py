@@ -134,5 +134,5 @@ def disconnect():
 
 
 if __name__ == "__main__":
-    socketio.run(app, debug=True)
+    socketio.run(app, debug=True, server='geventwebsocket')
     socketio = SocketIO(app, cors_allowed_origins="*")
