@@ -1,0 +1,4 @@
+name: jarochatapp
+port: $PORT
+build_command: pip install -r requirements.txt
+start_command: python app.py
