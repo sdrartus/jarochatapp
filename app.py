@@ -1,19 +1,35 @@
+import gevent.monkey
+from gevent.pywsgi import WSGIServer
+
+gevent.monkey.patch_all()
+
 from flask import Flask, render_template, request, session, redirect, url_for
 from flask_socketio import join_room, leave_room, send, SocketIO
 import random
 from string import ascii_uppercase
+
+
+
 from text_process import filter_profanity
 from text_process import leet_conver
 import time
-
+import os
+import gevent
+import geventwebsocket
 from gevent.pywsgi import WSGIServer
 from geventwebsocket.handler import WebSocketHandler
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "jarosimilarity"
-socketio = SocketIO(app, async_mode='gevent-websocket')
-from gevent import monkey
-monkey.patch_all()
+socketio = SocketIO(app, async_mode='gevent')
+
+
+
+
+rooms = {}
+
+# ...
+
 rooms = {}
 
 
