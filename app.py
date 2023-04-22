@@ -1,13 +1,13 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 from flask_socketio import join_room, leave_room, send, SocketIO
 import random
-import simple_websocket
 from string import ascii_uppercase
 from text_process import filter_profanity
 from text_process import leet_conver
 import time
 
-
+from geventwebsocket.handler import WebSocketHandler
+from gevent.pywsgi import WSGIServer
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "jarosimilarity"
@@ -101,9 +101,8 @@ def message(data):
 
 
 
-
 @socketio.on("connect")
-def connect(auth):
+def connect():
     room = session.get("room")
     name = session.get("name")
     if not room or not name:
@@ -116,7 +115,6 @@ def connect(auth):
     send({"name": name, "message": "has entered the room"}, to=room)
     rooms[room]["members"] += 1
     print(f"{name} joined room {room}")
-
 
 @socketio.on("disconnect")
 def disconnect():
@@ -134,5 +132,5 @@ def disconnect():
 
 
 if __name__ == "__main__":
-    socketio.run(app, debug=True, server='geventwebsocket')
-    socketio = SocketIO(app, cors_allowed_origins="*")
+    http_server = WSGIServer(("", 5000), app, handler_class=WebSocketHandler)
+    http_server.serve_forever()
