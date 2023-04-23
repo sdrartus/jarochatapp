@@ -1,1 +1,1 @@
-web: gunicorn -k "geventwebsocket.gunicorn.workers.GeventWebSocketWorker" yourapp:app
+web: gunicorn -k "geventwebsocket.gunicorn.workers.GeventWebSocketWorker" app:app
