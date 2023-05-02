@@ -182,6 +182,8 @@ def filter_profanity(text):
         "bullshit": ["boo sweet", "boos shot", "boo sneeze"],
         "crap": ["poop", "doodoo", "frap", "number two"],
         "fuck": ["freak", "flip", "fudge"],
+        "faak": ["freak", "flip", "fudge"],
+        "fak": ["freak", "flip", "fudge"],
         "damn": ["darn", "dang", "heck"],
         "butt": ["bum", "derriere"],
         "arse": ["bum", "derriere" "A level", "a-word", ],
