@@ -285,6 +285,7 @@ def filter_profanity(text):
         "a55": ["aww whole", "idiot", "dummy"],
         "a55hole": ["aww whole", "idiot", "dummy"],
         "aeolus": ["aww whole", "idiot", "dummy"],
+        "wanker": ["wperson","w-person"],
         "c.0.c.k": ["c-word", "manhood"],
         "c.o.c.k.": ["c-word", "manhood"],
         "c.u.n.t": ["unpleasant person", "disagreeable person"],
